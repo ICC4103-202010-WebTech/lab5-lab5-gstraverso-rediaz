@@ -19,5 +19,22 @@ namespace :db do
     result = Event.select(:name).distinct.map { |x| x.name }
     puts(result)
     puts("EOQ") # End Of Query -- always add this line after a query.
+
+    puts("Query 1: total number of tickets bought by a given customer. (default customer id: 2)")
+    result = Customer.find(2).tickets.count
+    puts(result)
+    puts("EOQ")
+
+    puts("Query 2: total number of different events that a given customer has attended. (default customer id: 2)")
+    result = Customer.find(2).tickets.distinct.map { |x| x.ticket_type.event_id }.uniq.count
+    puts(result)
+    puts("EOQ")
+
+    puts("Query 3: total number of different events that a given customer has attended. (default customer id: 2)")
+    result =
+    puts(result)
+    puts("EOQ")
+
+
   end
 end
