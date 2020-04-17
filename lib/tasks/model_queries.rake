@@ -30,8 +30,8 @@ namespace :db do
     puts(result)
     puts("EOQ")
 
-    puts("Query 3: total number of different events that a given customer has attended. (default customer id: 2)")
-    result =
+    puts("Query 3: names of the events attended by a given customer. (default customer id: 2)")
+    result = Customer.find(2).tickets.distinct.map { |x| x.ticket_type.event.name }.uniq
     puts(result)
     puts("EOQ")
 
