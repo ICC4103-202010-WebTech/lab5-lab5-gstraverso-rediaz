@@ -35,8 +35,13 @@ namespace :db do
     puts(result)
     puts("EOQ")
 
-    puts("Query 4: total number of tickets sold for an event.. (default customer id: 1)")
+    puts("Query 4: total number of tickets sold for an event. (default customer id: 1)")
     result = Event.find(1).ticket_types.distinct.map { |x| x.tickets.count }.inject(0){|sum,x| sum + x }
+    puts(result)
+    puts("EOQ")
+
+    puts("Query 5: total sales of an event. (default customer id: 1)")
+    result = Event.find(1).ticket_types.distinct.map { |x| x.tickets.distinct.map { |x| x.ticket_type.ticket_price}.inject(0){|sum,x| sum + x }}.inject(0){|sum,x| sum + x }
     puts(result)
     puts("EOQ")
 
