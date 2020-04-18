@@ -51,7 +51,7 @@ namespace :db do
     puts("EOQ")
 
     puts("Query 7: the event that has been most attended by men ages 18 to 30. (default customer id: 1)")
-    result = Event.joins(ticket_types: {tickets: {order: :customer}}).where(customers: {gender: "m",age: (18)..(30)}).group(:name).count
+    result = Event.joins(ticket_types: {tickets: {order: :customer}}).where(customers: {gender: "m",age: (18)..(30)}).group(:name).count.max
     puts(result)
     puts("EOQ")
 
